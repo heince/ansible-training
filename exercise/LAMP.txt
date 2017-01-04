@@ -16,7 +16,9 @@ LAMP
 - enable related service at boot
 - disable selinux on dbserver
 - set selinux on webserver to enable httpd to connect to remote database
-  hint : httpd_can_network_connect_db
+  hint : 
+    use seboolean module
+    name=httpd_can_network_connect_db
 
 
 
