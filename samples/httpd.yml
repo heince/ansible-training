@@ -1,0 +1,18 @@
+- hosts: linode
+  remote_user: root
+
+  tasks:
+   - name: install latest httpd
+     yum: name=httpd,php state=latest
+     notify: restart_httpd
+
+   - name: copy html source
+     copy: src=html/index.php dest=/var/www/html/test/
+     notify: restart_httpd
+
+   - name: enable httpd service at boot
+     service: name=httpd enabled=yes
+
+  handlers:
+   - name: restart_httpd
+     service: name=httpd state=restarted 

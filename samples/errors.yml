@@ -1,0 +1,8 @@
+- hosts: linode
+  gather_facts: no
+  tasks:
+    - name: some unknown package 
+      command: rpm -qi telnet2
+      ignore_errors: yes
+    - name: say hi
+      command: echo hi

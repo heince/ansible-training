@@ -1,0 +1,4 @@
+- name: echo halo
+  command: echo halo
+- name: echo hai
+  command: echo hai

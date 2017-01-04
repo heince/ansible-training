@@ -1,0 +1,15 @@
+- hosts: linode
+  remote_user: root
+  gather_facts: no
+  vars: 
+    - contents: "{{ lookup('file', '/tmp/test1') }}"
+    - uname: "{{ lookup('pipe', 'uname') }}"
+    - name2: "{{ lookup('csvfile', '1 file=/Volumes/PNY128GB/Learning/ansible/playbooks/sample.csv delimiter=,') }}"
+    - myhomedir: "{{ lookup('env','HOME') }}"
+    - mytmpfile: "{{ lookup('fileglob', '*.csv', '.retry') }}"
+
+  tasks:
+  - name: test lookup
+    debug: msg="the value of test1 is {{ contents }} on controller running {{ uname }} kernel"
+  - debug: msg="my name is {{ name2 }}, myhome is {{ myhomedir }}"
+  - debug: msg="my tmp files {{ mytmpfile }}"

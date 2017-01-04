@@ -1,0 +1,20 @@
+- hosts: linode
+  gather_facts: no
+  tasks:
+    - name: install latest telnet package
+      yum: name=telnet state=latest
+      tags:
+        - pkg_telnet
+
+    - name: verify telnet was installed
+      command: rpm -q telnet
+      #args:
+      #  warn: no
+      tags:
+        - verify_telnet
+        - verify_telnet2
+
+    - name: some important job
+      command: echo important
+      tags:
+        - always

@@ -1,0 +1,13 @@
+- hosts: linode
+  gather_facts: no
+  tasks:
+    - name: run custom daemon
+      shell: /root/playbooks/daemon_main start
+    - name: verify daemon status until running
+      shell: /root/playbooks/daemon_main status
+      register: result
+      until: result.stdout.find("started") != -1
+      retries: 20
+      delay: 5
+
+    - debug: var=result

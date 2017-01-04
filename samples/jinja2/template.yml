@@ -1,0 +1,6 @@
+- hosts: linode
+  vars:
+    - ipAddress: "{{ ansible_eth0.ipv4.address }}"
+  tasks:
+    - name: custom config for ip address
+      template: src=app.conf.j2 dest=/tmp/app.conf

@@ -1,0 +1,14 @@
+- hosts: linode
+  remote_user: root
+
+  tasks:
+   - name: raw - testing handler
+     raw: hostname
+     notify: echo ok
+   - debug: var=myraw.stdout_lines
+
+  handlers:
+   - name: echo ok
+     raw: echo ok > /tmp/okansible
+   
+     

@@ -1,0 +1,13 @@
+- hosts: linode
+  gather_facts: no
+  vars:
+    - myitem: [ 1,3,6,5,11 ]
+  tasks:
+   - command: echo {{ item }}
+     with_items: [ 0,2,4,6 ]
+     when: item > 5
+   - name: skip the whole task
+     command: echo {{ item }}
+     with_items: "{{ myitem2|default([]) }}"
+     when: item > 5
+     

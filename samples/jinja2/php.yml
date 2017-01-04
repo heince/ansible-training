@@ -1,0 +1,9 @@
+- hosts: linode
+  vars:
+    - dbserver: "dbserver1"
+    - dbname: "ansible"
+    - dbuser: "user1"
+    - dbpassword: "password"
+  tasks:
+    - name: custom config for ip address
+      template: src=index.php.j2 dest=/tmp/index.php

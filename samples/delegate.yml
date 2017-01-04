@@ -1,0 +1,16 @@
+- hosts: linode
+  tasks:
+    - name: run on ukmband
+      command: echo from "{{ ansible_hostname }}" to ukmband
+      register: first
+      delegate_to: 188.166.183.136
+    - name: run something on linode
+      command: hostname
+      register: second
+    - name: run on ukmband again
+      command: echo from "{{ ansible_hostname }}" to ukmband again
+      delegate_to: 188.166.183.136
+      register: third
+    - debug: var=first.stdout_lines
+    - debug: var=second.stdout_lines
+    - debug: var=third.stdout_lines

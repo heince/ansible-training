@@ -1,0 +1,7 @@
+- hosts: linode
+  gather_facts: no
+  tasks:
+    - name : ping linode first before install
+      local_action: command ping -c 1 139.162.35.106
+    - yum: name=httpd state=latest
+

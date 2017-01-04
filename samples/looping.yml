@@ -1,0 +1,16 @@
+- hosts: local
+  connection: local
+  
+  tasks:
+   - name: test looping copy file
+     debug: msg="hello {{ item }}"
+     with_items:
+     - /tmp/test1
+     - /tmp/test2
+   - debug: msg="glob = {{ item }}"
+     with_fileglob: "*.retry"
+   - debug: msg="name = {{ item[0] }} , role = {{ item[1] }} , project = {{ item[2] }}"
+     with_nested:
+       - [ 'andi', 'abu' ]
+       - [ 'admin', 'dev', 'tester']
+       - [ 'project A', 'project B', 'project C']

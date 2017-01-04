@@ -1,0 +1,11 @@
+user=user1
+password=1234
+ipaddress={{ ipAddress }}
+interfaces={% for iface in ansible_interfaces %}{{ iface }},{% endfor %}
+{% if 'RedHat' in ansible_os_family %}
+    {% set os = 'linux' %}
+{% else %}
+    {% set os = 'non RedHat' %}
+{% endif %}
+
+os={{ os }}

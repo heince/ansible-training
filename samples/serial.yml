@@ -1,0 +1,5 @@
+- hosts: all
+  serial: 1
+  tasks:
+    - name: echo something
+      command: echo halo

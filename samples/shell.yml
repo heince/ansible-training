@@ -1,0 +1,9 @@
+- hosts: xcat
+  gather_facts: no
+  vars:
+    - nama: "heince; kurniawan"
+  tasks:
+    - name: test quote on shell
+      shell: echo {{ nama | quote }}
+      register: myname
+    - debug: var=myname.stdout_lines

@@ -1,0 +1,6 @@
+- hosts: xcat
+  gather_facts: no
+  tasks:
+    - name: check if alive
+      #service: name=testansible pattern='/tmp/demon.pl' state=restarted
+      service: name=httpd state=stopped

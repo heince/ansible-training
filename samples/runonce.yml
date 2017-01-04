@@ -1,0 +1,5 @@
+- hosts: all
+  tasks:
+    - name: echo once on first node
+      raw: echo test > /tmp/test
+      run_once: true

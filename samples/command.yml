@@ -1,0 +1,7 @@
+- hosts: linode
+  gather_facts: no
+  vars:
+    - company_name: ABC
+  tasks:
+    - name: run simple command
+      shell: echo {{ company_name }} > /tmp/company

@@ -1,0 +1,10 @@
+- hosts: linode
+  gather_facts: no
+  tasks:
+   - include: play/tasks.yml
+   - name: hi again !
+     command: echo 'hi again !'
+     notify: from handler
+
+  handlers:
+   - include: play/handlers.yml

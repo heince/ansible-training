@@ -1,0 +1,9 @@
+- hosts: linode
+  gather_facts: no
+  tasks:
+    - name: test echo
+      command: echo test
+    - pause:  prompt="please verify..."
+    - pause:  minutes=5
+    - name: finished
+      debug: var="finished"

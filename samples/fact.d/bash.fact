@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cpu_idle=`mpstat  | tail -1 | awk '{print $13}'`
+
+echo "[node]"
+echo "cpu_idle=$cpu_idle%"

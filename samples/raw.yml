@@ -1,0 +1,4 @@
+- hosts: xcat
+  tasks:
+    - name: put hostname to /tmp
+      raw: echo {{ ansible_hostname }} > /tmp/hostname

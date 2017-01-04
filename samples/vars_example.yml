@@ -1,0 +1,20 @@
+- hosts: all
+  strategy: debug
+  remote_user: root
+  vars:
+    playbook_version: 0.1
+  vars_files:
+    - vars/copyright.yml
+  vars_prompt:
+    - name: first_name
+      prompt: First Name
+  tasks:
+  - debug: msg="Linux kernel {{ ansible_kernel }}"
+  - name: placeholder by author {{ author }}
+    shell: /bin/echo hello "{{ first_name }}"
+    register: echo
+  - debug: var=echo.stdout_lines
+  - name: install telnet
+    yum: name=telnet state=latest
+
+  #gather_facts: no

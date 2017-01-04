@@ -1,0 +1,7 @@
+- hosts: linode
+  gather_facts: no
+  tasks:
+    - name: get file stats from /etc/fstab
+      file: path=/etc/fstab
+      register: fstab
+    - debug: var=fstab.owner 

@@ -1,0 +1,12 @@
+- hosts: linode
+  gather_facts: no
+  tasks:
+    - name: gather only distribution facts
+      setup: filter=ansible_kernel filter=ansible_distribution*
+    - name: gather only kernel facts
+      setup: filter=ansible_kernel
+    - name: test echo
+      command: echo "{{ ansible_distribution }}" " , {{ ansible_kernel }}"
+      register: echo
+    - debug: var=echo.stdout_lines
+    - debug: msg="{{ ansible_distribution }} {{ ansible_kernel  }}"

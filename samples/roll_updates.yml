@@ -1,0 +1,9 @@
+- hosts: linode,ukmband
+  serial:
+    - 1
+    - 2
+    - 3
+    - 4
+  tasks:
+    - name: test echo
+      command: echo test

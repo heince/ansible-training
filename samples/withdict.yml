@@ -1,0 +1,14 @@
+- hosts: linode
+  gather_facts: no
+  vars:
+   - mydict:
+            andi: 
+                age: 25
+            abu: 
+                age: 18
+
+  tasks:
+   - command: echo {{ item.key }}
+     with_dict: "{{ mydict|default({}) }}"
+     when: item.value.age > 20
+

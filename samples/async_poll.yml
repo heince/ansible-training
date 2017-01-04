@@ -1,0 +1,15 @@
+- hosts: all
+  remote_user: root
+  tasks:
+    - name: sleep 15s, wait for 30s, pool every 5s
+      shell: /usr/bin/sleep 15
+      args:
+        executable: /bin/bash
+      async: 100
+      poll: 0
+    - name: log sleep
+      command: /usr/bin/logger "sleep continue"
+    - name: sleep again
+      command: /usr/bin/sleep 5
+      async: 100
+  gather_facts: no

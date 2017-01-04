@@ -1,0 +1,7 @@
+- hosts: "{{ hosts }}"
+  gather_facts: no
+  tasks:
+    - name: echo some stuff
+      command: echo "{{ stuff }}"
+      register: mystuff
+    - debug: var=mystuff.stdout_lines

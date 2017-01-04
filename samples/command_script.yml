@@ -1,0 +1,8 @@
+- hosts: xcat
+  gather_facts: no
+  tasks:
+    - name: run a script
+      command: /home/ansible/test.sh
+      args:
+        chdir: /tmp
+    - shell: echo "BLA" > test2.output

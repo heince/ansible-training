@@ -1,0 +1,9 @@
+- hosts: all
+  #become: yes
+  #become_user: ansible
+  connection: ssh
+  remote_user: root
+  gather_facts: no
+  tasks:
+    - name: ping all
+      action: ping

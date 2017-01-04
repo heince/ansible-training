@@ -1,0 +1,7 @@
+- hosts: linode
+  #gather_facts: no
+  vars:
+    - in_maintenance: "{{ lookup('pipe', 'cat data/access') }}"
+  tasks:
+    - debug: msg="we are ok to run !"
+      when: ansible_env.SHELL == "/bin/bash" and in_maintenance == "false"

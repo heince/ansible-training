@@ -1,0 +1,6 @@
+- hosts: local
+  vars:
+    company_name: ABC
+  tasks:
+    - name: run shell command
+      shell: echo {{ company_name }} > /tmp/company

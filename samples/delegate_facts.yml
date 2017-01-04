@@ -1,0 +1,13 @@
+- hosts: linode
+  vars:
+    - dbdns: "{{ hostvars['188.166.183.136'].ansible_dns.nameservers[0] }}"
+  tasks:
+    - name: gather facts from ukmband
+      setup:
+      delegate_to: "{{ item }}" 
+      delegate_facts: true
+      with_items: "{{groups['ukmband']}}"
+    - name: get db fact
+      command: echo "{{ dbdns }}"
+      register: dns
+    - debug: var=dns.stdout_lines

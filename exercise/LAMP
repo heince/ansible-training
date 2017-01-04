@@ -1,0 +1,23 @@
+LAMP
+- setup all time to jkt time
+- sync ntp
+- install dan setup mysql
+  - db = dbapp
+  - user = user1
+  - password = password
+  - set full akses from ip webserver1 using related db and user
+- install dan setup http
+  port = 8080
+- install php and dependency
+- get source code from git
+- use template module on the source code for servername,username,password,dbname
+- deploy code
+- configure firewall to open related port
+- enable related service at boot
+- disable selinux on dbserver
+- set selinux on webserver to enable httpd to connect to remote database
+  hint : httpd_can_network_connect_db
+
+
+
+
