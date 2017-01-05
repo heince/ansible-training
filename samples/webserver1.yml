@@ -1,0 +1,14 @@
+- hosts: webserver1
+  become: yes
+  tasks:
+     - name: make dir to put playbooks
+       file: state=directory  path=/opt/playbooks
+     - name: copy inventory
+       copy: src=/etc/ansible/hosts dest=/etc/ansible/hosts owner=root group=root mode=0644
+     - name: setup cron
+       cron:
+          name: "ansible-pull"
+          user: root
+          minute: "*/1"
+          state: present
+          job: "ansible-pull -U https://github.com/heince/ansiblepull.git -d /opt/playbooks {{ inventory_hostname_short }}.yml"
