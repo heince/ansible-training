@@ -1,0 +1,4 @@
+- hosts: linode
+  tasks:
+   - name: test ansible pull logging
+     shell: date >> /opt/playbooks/date.log
